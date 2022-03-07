@@ -72,7 +72,7 @@ while True:
         elif username=="i have no brain" and content==".status":
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={"content":"Looking good, if I can survive until 1/4, this method will work fine, discord forget to fix bug, hopefully :D"})
         elif username=="i have no brain" and content==".clear":
-            os.remove(log.csv)
+            os.remove("log.csv")
             f = open("log.csv", "a")
             f.write("channel_id,author,message_content\n")
             f.close()
