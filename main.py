@@ -67,18 +67,35 @@ while True:
         f.write(channel_id+","+username+","+content+"\n")
         f.close()
 
-        if ".decode" in content:
+        if ".decode2" in content:
             content = content.lower()
             a = content.split("$")
-            dc = ""
+            dc = []
+            arr = []
             for char in a[1]:
                 if char == " ":
-                    dc += " "
+                    arr.append(dc)
+                    dc = []
                 else:
-                    dc += str(ord(char)-ord('a')+1)+"."
+                    dc.append((ord(char)-ord('a')+1))
+
+            r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
+                              "content": str(arr)})
+
+        elif ".decode" in content:
+            content = content.lower()
+            a = content.split("$")
+            dc = []
+            arr = []
+            for char in a[1]:
+                if char == " ":
+                    arr.append(dc)
+                    dc = []
+                else:
+                    dc.append((ord(char)-ord('a')+1))
             print(content, a, dc)
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": dc})
+                              "content": str(arr)})
 
         if username == "i have no brain" and content == ".log":
             files = {
