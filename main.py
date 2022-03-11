@@ -67,6 +67,24 @@ while True:
         f.write(channel_id+","+username+","+content+"\n")
         f.close()
 
+        if ".checkalpha" in content:
+            alpha = "abcdefghijklmnopqrstuvwxyz"
+            content = content.lower()
+            a = content.split("$")
+
+            check = 1
+            mis = "Missing char is : "
+
+            for char in alpha:
+                for cchar in a[1]:
+                    if(char == cchar):
+                        check = 0
+                if(check):
+                    mis += (char+" ")
+                check = 1
+            r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
+                              "content": str(mis)})
+
         if ".decode2" in content:
             content = content.lower()
             a = content.split("$")
