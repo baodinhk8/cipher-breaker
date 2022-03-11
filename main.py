@@ -75,7 +75,7 @@ while True:
                 if char == " ":
                     dc += " "
                 else:
-                    dc += str(ord(char)-ord('a')+1)+"-"
+                    dc += str(ord(char)-ord('a')+1)+"."
             print(content, a, dc)
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                               "content": dc})
@@ -102,4 +102,4 @@ while True:
         if op_code == 11:
             print("heartbeat received")
     except Exception as e:
-        print(e)
+        pass
