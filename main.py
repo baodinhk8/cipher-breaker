@@ -102,10 +102,10 @@ while True:
             for i in new_arr:
                 for j in i:
                     try:
-                        s += chr(j+ord(a)-1)
+                        s += chr(j+ord('a')-1)
                     except:
                         s += "?"
-                s += "\n"
+                s += " "
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                               "content": str(s)})
