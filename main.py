@@ -67,6 +67,14 @@ while True:
         f.write(channel_id+","+username+","+content+"\n")
         f.close()
 
+        if".bfattack" in content:
+            for i in range(1000000001):
+                if i % 100000000 == 0:
+                    message = "Trying " + \
+                        str(i)+" times. Result in the .result command"
+                    r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
+                        "content": message})
+
         if ".checkalpha" in content:
             alpha = "abcdefghijklmnopqrstuvwxyz"
             content = content.lower()
@@ -83,7 +91,7 @@ while True:
                     mis += (char+" ")
                 check = 1
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": str(mis)})
+                "content": str(mis)})
 
         if ".decode2" in content:
             content = content.lower()
@@ -126,7 +134,7 @@ while True:
                 s += " "
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": str(s)})
+                "content": str(s)})
 
         elif ".decode" in content:
             content = content.lower()
@@ -141,7 +149,7 @@ while True:
                     dc.append((ord(char)-ord('a')+1))
             print(content, a, dc)
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": str(arr)})
+                "content": str(arr)})
 
         if username == "i have no brain" and content == ".log":
             files = {
@@ -152,7 +160,7 @@ while True:
                 f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, files=files)
         elif username == "i have no brain" and content == ".status":
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": "Looking good, if I can survive until 1/4, this method will work fine, discord forget to fix bug, hopefully :D"})
+                "content": "Looking good, if I can survive until 1/4, this method will work fine, discord forget to fix bug, hopefully :D"})
         elif username == "i have no brain" and content == ".clear":
             os.remove("log.csv")
             f = open("log.csv", "a")
