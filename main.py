@@ -78,9 +78,27 @@ while True:
                     dc = []
                 else:
                     dc.append((ord(char)-ord('a')+1))
+            lst = []
+            for i in a[2]:
+                lst.append(int(i))
+
+            x = 0
+            new_dc = []
+            new_arr = []
+            for i in arr:
+                for j in i:
+                    try:
+                        new_dc.append(j-lst[x])
+                        x += 1
+                    except:
+                        x = 0
+                        new_dc.append(j-lst[x])
+                        x += 1
+                new_arr.append(new_dc)
+                new_dc = []
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                              "content": str(arr)})
+                              "content": str(new_arr)})
 
         elif ".decode" in content:
             content = content.lower()
