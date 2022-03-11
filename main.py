@@ -71,11 +71,12 @@ while True:
             content = content.lower()
             a = content.split("$")
             dc = ""
-            for char in a:
+            for char in a[1]:
                 if char == " ":
                     dc += " "
                 else:
-                    dc += str(int(char)-int('a'))+"-"
+                    dc += str(ord(char)-ord('a')+1)+"-"
+            print(content, a, dc)
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                               "content": dc})
 
@@ -100,5 +101,5 @@ while True:
         op_code = event("op")
         if op_code == 11:
             print("heartbeat received")
-    except:
-        pass
+    except Exception as e:
+        print(e)
