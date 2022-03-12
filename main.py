@@ -86,8 +86,37 @@ while True:
                     for i in range(len(alpha_arr)):
                         if(alpha_arr[i] == char):
                             dc.append(i+1)
+            lst = []
+            for i in a[3]:
+                lst.append(int(i))
+
+            x = 0
+            new_dc = []
+            new_arr = []
+            for i in arr:
+                for j in i:
+                    try:
+                        new_dc.append(j-lst[x])
+                        x += 1
+                    except:
+                        x = 0
+                        new_dc.append(j-lst[x])
+                        x += 1
+                new_arr.append(new_dc)
+                new_dc = []
+
+            s = ""
+
+            for i in new_arr:
+                for j in i:
+                    try:
+                        s += chr(j+ord('a')-1)
+                    except:
+                        s += "?"
+                s += " "
+
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                "content": str(arr)})
+                "content": str("ASCII alphabet: "+s+"\nCustom alphabet: ")})
 
         if ".bw" in content:
             a = content.split("$")
