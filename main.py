@@ -67,6 +67,26 @@ while True:
         f.write(channel_id+","+username+","+content+"\n")
         f.close()
 
+        if ".dcustomalpha" in content:
+            content = content.lower()
+            a = content.split("$")
+
+            alpha = (a[2]).replace(" ", "")
+            alpha_arr = []
+            for char in alpha:
+                alpha_arr.append(char)
+
+            for char in a[1]:
+                if char == " ":
+                    arr.append(dc)
+                    dc = []
+                else:
+                    for i in range(len(alpha_arr)):
+                        if(alpha_arr[i] == char):
+                            dc.append(i+1)
+            r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
+                "content": arr})
+
         if ".bw" in content:
             a = content.split("$")
 
