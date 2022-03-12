@@ -103,8 +103,8 @@ while True:
         if".bfattack" in content:
             for i in range(1000000001):
                 if i % 100000000 == 0:
-                    message = "Trying " +
-                    str(i)+" times. Result in the .result command"
+                    message = "Trying " + \
+                        str(i)+" times. Result in the .result command"
                     r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                         "content": message})
 
