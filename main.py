@@ -106,13 +106,16 @@ while True:
                 new_dc = []
 
             s = ""
+            ca = ""
 
             for i in new_arr:
                 for j in i:
                     try:
                         s += chr(j+ord('a')-1)
+                        ca += alpha_arr[j-1]
                     except:
                         s += "?"
+                        ca += "?"
                 s += " "
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
