@@ -35,7 +35,7 @@ event = receive_json_response(ws)
 heartbeat_interval = event['d']['heartbeat_interval']/1000
 threading._start_new_thread(heartbeat, (heartbeat_interval, ws))
 
-token = "OTUwMzExMTUxMTc3MTkxNDU2.YiXHDg.lVO7l0IeKOVw0rXrFYDOlJRR9vY"
+token = "YOUR_TOKEN"
 
 payload = {
     "op": 2,
