@@ -73,6 +73,8 @@ while True:
 
             alpha = (a[2]).replace(" ", "")
             alpha_arr = []
+            dc = []
+            arr = []
             for char in alpha:
                 alpha_arr.append(char)
 
@@ -85,7 +87,7 @@ while True:
                         if(alpha_arr[i] == char):
                             dc.append(i+1)
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                "content": arr})
+                "content": str(arr)})
 
         if ".bw" in content:
             a = content.split("$")
@@ -101,8 +103,8 @@ while True:
         if".bfattack" in content:
             for i in range(1000000001):
                 if i % 100000000 == 0:
-                    message = "Trying " + \
-                        str(i)+" times. Result in the .result command"
+                    message = "Trying " +
+                    str(i)+" times. Result in the .result command"
                     r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                         "content": message})
 
