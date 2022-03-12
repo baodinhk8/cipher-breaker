@@ -67,6 +67,17 @@ while True:
         f.write(channel_id+","+username+","+content+"\n")
         f.close()
 
+        if ".bw" in content:
+            a = content.split("$")
+
+            s = ""
+
+            for char in a[1]:
+                s = char+""
+
+            r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
+                "content": s})
+
         if".bfattack" in content:
             for i in range(1000000001):
                 if i % 100000000 == 0:
