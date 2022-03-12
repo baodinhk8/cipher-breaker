@@ -119,7 +119,7 @@ while True:
                 s += " "
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
-                "content": str("ASCII alphabet: "+s+"\nCustom alphabet: ")})
+                "content": str("ASCII alphabet: "+s+"\nCustom alphabet: "+ca)})
 
         if ".bw" in content:
             a = content.split("$")
