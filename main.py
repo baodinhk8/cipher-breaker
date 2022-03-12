@@ -204,4 +204,5 @@ while True:
         if op_code == 11:
             print("heartbeat received")
     except Exception as e:
-        pass
+        print(e)
+        # pass
