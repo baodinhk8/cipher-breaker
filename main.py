@@ -73,7 +73,7 @@ while True:
             s = ""
 
             for char in a[1]:
-                s = char+""
+                s = char+s
 
             r = requests.post(f"https://discord.com/api/v9/channels/{channel_id}/messages", headers=header, data={
                 "content": s})
